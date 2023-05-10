@@ -32,3 +32,25 @@ jobs:
       - run: ls -lah `which elixir`
       - run: elixir -v
       - run: elixir $GITHUB_WORKSPACE/src/module-01-hello-world/scripts/Hello.exs
+  Hello-2:
+    if: github.event.inputs.trigger == ''
+      || !startsWith(github.event.inputs.trigger, 'm')
+      || !startsWith(github.event.inputs.trigger, 'M')
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/Homebrew/erlang--*
+            ~/Library/Caches/Homebrew/downloads/*--erlang-*
+            ~/Library/Caches/Homebrew/elixir--*
+            ~/Library/Caches/Homebrew/downloads/*--elixir-*
+          key: brew-${{ hashFiles('.github/workflows/*') }}
+          restore-keys: brew-
+      - run: command -v brew >/dev/null 2>&1 || { echo >&2 "Homebrew is required but not installed. Aborting." ; exit 1 ; }
+      - run: brew reinstall elixir
+      - run: command -v elixir >/dev/null 2>&1 || { echo >&2 "Elixir is required but not installed. Aborting." ; exit 1 ; }
+      - run: ls -lah `which elixir`
+      - run: elixir -v
+      - run: elixir $GITHUB_WORKSPACE/src/module-01-hello-world/scripts/Hello.exs
