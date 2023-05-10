@@ -21,6 +21,6 @@ elixir src/module-01-hello-world/scripts/Hello.exs
 
 ## RTFM
 
-* [Functional Programming with Elixir – Full Course freeCodeCamp.org](https://youtu.be/IiIgm_yaoOA?t=2339)
+* [Functional Programming with Elixir – Full Course freeCodeCamp.org](https://youtu.be/IiIgm_yaoOA)
 * [Elixir: Project Introduction](youtube.com/watch?v=0ri4BT38P8Q)
 * [Elixir: Generating a new Application with Mix](youtube.com/watch?v=45W95DHT33g)
